@@ -21,7 +21,7 @@ def callsCosts(data, p):
     :param p: порог
     :param return: стоимость звонков
     '''
-    fraud_count = len([x for i,x in enumerate(data) if (x >= p)])
+    fraud_count = len([x for x in data if (x >= p)])
     call_count = fraud_count * 0.9
     cost_of_calls = call_count * 40
     return cost_of_calls
@@ -52,11 +52,11 @@ def costsReputation(data, check, amount, p):
     :param return: репутационная прибыль
     '''
     reputation_costs = 0
-    for i,x in enumerate(data):
-        if x >= p and check[i] == 'F':
+    for d,c,a in zip(data, check, amount):
+        if d >= p and c == 'F':
             # какая-то дичь с NaN
-            if not np.isnan(float(amount[i])):
-                reputation_costs += float(amount[i])
+            if not np.isnan(float(a)):
+                reputation_costs += float(a)
 
     return reputation_costs
 
@@ -65,7 +65,7 @@ def costsReputation(data, check, amount, p):
 if __name__ == '__main__':
     data = pd.read_csv('2016.02.20.vyygrusska.csv', ';')
     for i in xrange(1, 4):
-        buf = list()
+        buf = [0, 0]
         x = 0
         y = 1
         jump = 0.01
@@ -78,7 +78,7 @@ if __name__ == '__main__':
             reputation_costs = costsReputation(data['p' + str(i) + '_Fraud'], data['CLASS'], data['AMOUNT'], p)
             CBA = reputation_costs - reputation_loss - cost_of_calls
 
-            buf.append([p, CBA])
-        buf = sorted(buf, key=lambda x: x[1])[len(buf)-1:0:-1]
-        print 'наибольший CBA для ЭС p' + str(i) + '_Fraud при p =', buf[0][0], ', CBA =', buf[0][1], 'рублей'
+            if buf[1] < CBA:
+                buf = [p, CBA]
+        print 'наибольший CBA для ЭС p' + str(i) + '_Fraud при p =', buf[0], ', CBA =', buf[1], 'рублей'
         print '----------------------------'

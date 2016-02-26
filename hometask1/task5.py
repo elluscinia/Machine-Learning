@@ -36,7 +36,7 @@ def funcMajority(systems):
     :param systems: ЭС и их решения
     :param return: решение функции на основании решений ЭС
     '''
-    return ['F' if int(0.5 + ((float(summ(systems, i)) - 0.5)/float(len(systems)))) == 1 else 'G' for i,x in enumerate(systems[0])]
+    return ['F' if int(0.5 + ((float(summ(systems, i)) - 0.5)/float(len(systems)))) == 1 else 'G' for i in xrange(0, len(systems[0]))]
 
 def true_negativeR(data, check):
     '''
@@ -45,8 +45,8 @@ def true_negativeR(data, check):
     :param check: проверенные данные
     :param return: tpr
     '''
-    tn = len([x for i,x in enumerate(data) if (check[i] == 'F' and data[i] == 'F')]) #tn
-    fp = len([x for i,x in enumerate(data) if (check[i] == 'F' and data[i] == 'G')]) #fp
+    tn = len([c for d,c in zip(data, check) if (c == 'F' and d == 'F')])
+    fp = len([c for d,c in zip(data, check) if (c == 'F' and d == 'G')])
     return float(tn) / float(tn+fp)
 
 def false_positiveR (data, check):
