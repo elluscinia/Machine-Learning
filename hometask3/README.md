@@ -48,12 +48,5 @@ plt.plot(X, [func_reg(x) for x in X], 'b-', alpha=0.05, linewidth=4). Возмо
 
 **???:** Для степеней 2 и 3 заметно, для 5, 6, 7 - нет.
 
-![degree 2](images/poly_degree_2.png)
-
-![degree 3](images/poly_degree_3.png)
-
-![degree 5](images/poly_degree_5.png)
-
-![degree 6](images/poly_degree_6.png)
-
-![degree 7](images/poly_degree_7.png)
+<img src="images/poly_degree_2.png" alt="degree 2" width="203" height="153"><img src="images/poly_degree_3.png" alt="degree 3" width="203" height="153">
+<img src="images/poly_degree_5.png" alt="degree 5" width="203" height="153"><img src="images/poly_degree_6.png" alt="degree 6" width="203" height="153"><img src="images/poly_degree_7.png" alt="degree 7" width="203" height="153">
