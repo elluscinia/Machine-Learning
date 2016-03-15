@@ -26,7 +26,7 @@ def summ(systems, i, A, B, C):
 
 
 def func(systems, A, B, C):
-    return [float(summ(systems, i, A, B, C)) / float(A + B + C) for i,x in enumerate(systems[0])]
+    return [float(summ(systems, i, A, B, C)) / float(A + B + C) for i in xrange(0, len(systems[0]))]
 
 if __name__ == '__main__':
     data = pd.read_csv('2016.02.20.vyygrusska.csv', ';') # выгрузим данные из csv
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
             for m in xrange(0, len(x)):
                 C = x[m]
-                
+
                 # функция p = (A*p1_fraud + B*p2_fraud + C*p3_fraud)/(A + B + C)
                 P = func([data['p' + str(i) + '_Fraud'] for i in xrange(1, 4)], A, B, C)
 

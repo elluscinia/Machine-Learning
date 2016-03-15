@@ -12,7 +12,7 @@ from task5 import summ
 from task3_4 import getData
 
 def func(systems):
-    return [float(summ(systems, i)) / float(3) for i,x in enumerate(systems[0])]
+    return [float(summ(systems, i)) / float(3) for i in xrange(0, len(systems[0]))]
 
 if __name__ == '__main__':
     data = pd.read_csv('2016.02.20.vyygrusska.csv', ';') # выгрузим данные из csv

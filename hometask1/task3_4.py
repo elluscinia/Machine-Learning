@@ -19,10 +19,10 @@ def getData(data, check):
     '''
     actual = list()
     predictions = list()
-    for i,x in enumerate(data):
-        if check[i] != 'U':
-            predictions.append(x)
-            if check[i] == 'F':
+    for d,c in zip(data, check):
+        if c != 'U':
+            predictions.append(d)
+            if c == 'F':
                 actual.append(1)
             else:
                 actual.append(0)

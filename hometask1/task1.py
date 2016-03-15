@@ -16,7 +16,7 @@ def esWorked(data, check, kind, p):
     :param p: значение решающего правила
     :param return: возвращает количество удовлетворяющих условию данных
     '''
-    return len([x for i,x in enumerate(data) if (x >= p and (check[i] == kind))])
+    return len([c for d,c in zip(data, check) if (d >= p and (c == kind))])
 
 def esNotWorked(data, check, kind, p):
     '''
@@ -27,7 +27,7 @@ def esNotWorked(data, check, kind, p):
     :param p: значение решающего правила
     :param return: возвращает количество удовлетворяющих условию данных
     '''
-    return len([x for i,x in enumerate(data) if (x < p and (check[i] == kind))])
+    return len([c for d,c in zip(data, check) if (d < p and (c == kind))])
 
 def rate (x, y):
     return float(x) / (float(x + y))
