@@ -64,5 +64,3 @@ target/
 #Confidential Files
 *.csv
 
-#PNG Files
-*.png
