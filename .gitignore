@@ -64,3 +64,4 @@ target/
 #Confidential Files
 *.csv
 
+.idea/
