@@ -26,14 +26,17 @@ def es(data, p):
 
 def summ(systems, i):
     '''
-    Суммирующая вспомогательная функция для мажритарной функции
+    Суммирующая вспомогательная функция для мажоритарной функции
     :param systems: решения ЭС
     :param i: номер решения ЭС
     :param return: сумма решений
     '''
     ans = 0
     for j in range(0, len(systems)):
-        ans += systems[j][i]
+        if systems[j][i] == 0:
+            ans += -1
+        else:
+            ans += systems[j][i]
     return ans
 
 
@@ -43,7 +46,7 @@ def funcMajority(systems):
     :param systems: ЭС и их решения
     :param return: решение функции на основании решений ЭС
     '''
-    return ['F' if int(0.5 + ((float(summ(systems, i)) - 0.5)/float(len(systems)))) == 1 else 'G' for i in range(0, len(systems[0]))]
+    return ['F' if summ(systems, i) >= 1 else 'G' for i in range(0, len(systems[0]))]
 
 def tnr(data, check):
     '''
